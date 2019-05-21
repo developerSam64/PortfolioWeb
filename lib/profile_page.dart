@@ -8,28 +8,66 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       largeScreen: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.black,
-        ),
+        backgroundColor: Colors.white,
+//        appBar: AppBar(
+//          centerTitle: true,
+//          title: Text(
+//            "My Portfolio",
+//            style: TextStyle(
+//                color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+//          ),
+//          backgroundColor: Colors.black87,
+//          leading: Icon(Icons.arrow_back_ios),
+//        ),
         drawer: ResponsiveWidget.isSmallScreen(context)
             ? Drawer(
+                elevation: 2,
                 child: ListView(
                   padding: const EdgeInsets.all(20),
                   children: <Widget>[
-                    NavButton(
-                      text: "about",
-                      onPressed: () {},
+                    Container(
+                      height: ResponsiveWidget.isSmallScreen(context)
+                          ? MediaQuery.of(context).size.height * 0.3
+                          : MediaQuery.of(context).size.width * 0.2,
+                      width: ResponsiveWidget.isSmallScreen(context)
+                          ? MediaQuery.of(context).size.height * 0.3
+                          : MediaQuery.of(context).size.width * 0.2,
+                      decoration: BoxDecoration(
+                        backgroundBlendMode: BlendMode.luminosity,
+                        color: Colors.black26,
+//            borderRadius: BorderRadius.circular(40),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage("sumit.jpg"),
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ),
-                    NavButton(
-                      text: "work",
-                      onPressed: () {},
+                    SizedBox(
+                      height: 20,
                     ),
-                    NavButton(
-                      text: "contact",
-                      onPressed: () {},
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Home",
+                        style: TextStyle(color: Colors.white70),
+                      ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Resume",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Contact",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    )
                   ],
                 ),
               )
@@ -40,13 +78,41 @@ class ProfilePage extends StatelessWidget {
             padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.1),
             child: ResponsiveWidget(
               largeScreen: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   NavHeader(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
                   ),
-                  ProfileInfo(),
+                  Column(
+                    children: <Widget>[
+                      ProfileInfo(),
+                      Align(
+                        alignment: Alignment.center,
+                        child: RaisedButton(
+                          shape: StadiumBorder(),
+                          child: Text("Resume"),
+                          color: Colors.green,
+                          onPressed: () {},
+                          padding: EdgeInsets.all(10),
+                        ),
+                      ),
+                      OutlineButton(
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                        ),
+                        shape: StadiumBorder(),
+                        child: Text(
+                          "Say Hi!",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                        color: Colors.tealAccent,
+                        onPressed: () {},
+                        padding: EdgeInsets.all(10),
+                      )
+                    ],
+                  ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.2,
                   ),
@@ -67,28 +133,101 @@ class NavHeader extends StatelessWidget {
       largeScreen: Row(
         mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
             ? MainAxisAlignment.center
-            : MainAxisAlignment.spaceBetween,
+            : MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          PKDot(),
 //          Spacer(),
           if (!ResponsiveWidget.isSmallScreen(context))
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                NavButton(
-                  text: "about",
-                  onPressed: () {},
+                Text(
+                  "Home",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
                 ),
-                NavButton(
-                  text: "work",
-                  onPressed: () {},
+                SizedBox(
+                  width: 10,
                 ),
-                NavButton(
-                  text: "contact",
-                  onPressed: () {},
+                Text(
+                  "Projects",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Videos",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "About",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Work",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Contact",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black87),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+//                NavButton(
+//                  text: "Work",
+//                  onPressed: () {},
+//                ),
+//                NavButton(
+//                  text: "Contact",
+//                  onPressed: () {},
+//                ),
               ],
-            )
+            ),
+          SizedBox(
+            width: 50,
+          ),
+          PKDot(),
         ],
       ),
     );
@@ -101,9 +240,11 @@ class PKDot extends StatelessWidget {
     return Row(
       children: <Widget>[
         Text(
-          "PK",
+          "Sumit Kumar",
           textScaleFactor: 2,
           style: TextStyle(
+            fontSize: 12,
+            color: Colors.black54,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -116,7 +257,7 @@ class PKDot extends StatelessWidget {
           width: 8,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.orange,
+            color: Colors.green,
           ),
         ),
       ],
@@ -152,18 +293,18 @@ class NavButton extends StatelessWidget {
 class ProfileInfo extends StatelessWidget {
   profileImage(context) => Container(
         height: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
+            ? MediaQuery.of(context).size.height * 0.2
+            : MediaQuery.of(context).size.width * 0.2,
         width: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.25
-            : MediaQuery.of(context).size.width * 0.25,
+            ? MediaQuery.of(context).size.height * 0.2
+            : MediaQuery.of(context).size.width * 0.2,
         decoration: BoxDecoration(
           backgroundBlendMode: BlendMode.luminosity,
-          color: Colors.deepOrange,
+          color: Colors.black26,
 //            borderRadius: BorderRadius.circular(40),
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: AssetImage("pk.jpg"),
+            image: AssetImage("sumit.jpg"),
             alignment: Alignment.center,
             fit: BoxFit.cover,
           ),
@@ -173,16 +314,16 @@ class ProfileInfo extends StatelessWidget {
   final profileData = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
+//      Text(
+//        "Hey! My name is",
+//        textScaleFactor: 2,
+//        style: TextStyle(color: Colors.white),
+//      ),
       Text(
-        "Hi there! My name is",
-        textScaleFactor: 2,
-        style: TextStyle(color: Colors.orange),
-      ),
-      Text(
-        "Pawan\nKumar",
+        "SUMIT\nKUMAR",
         textScaleFactor: 5,
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.redAccent,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -190,12 +331,11 @@ class ProfileInfo extends StatelessWidget {
         height: 10,
       ),
       Text(
-        "A Google Developer Expert for Flutter, Dart & Web Tech.\n"
-        "I am also a youtuber having MTechViral youtube channel\n"
-        "where I make tutorials for technology.",
+        "An Android Developer Expert for Flutter, Dart & Native Android.\n"
+        "If working environment is great then i can deliver pixel perfect applications.\n ",
         softWrap: true,
         textScaleFactor: 1.5,
-        style: TextStyle(color: Colors.white70),
+        style: TextStyle(color: Colors.black45),
       ),
       SizedBox(
         height: 20,
@@ -203,26 +343,26 @@ class ProfileInfo extends StatelessWidget {
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          RaisedButton(
-            shape: StadiumBorder(),
-            child: Text("Resume"),
-            color: Colors.red,
-            onPressed: () {},
-            padding: EdgeInsets.all(10),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          OutlineButton(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-            shape: StadiumBorder(),
-            child: Text("Say Hi!"),
-            color: Colors.red,
-            onPressed: () {},
-            padding: EdgeInsets.all(10),
-          )
+//          RaisedButton(
+//            shape: StadiumBorder(),
+//            child: Text("Resume"),
+//            color: Colors.green,
+//            onPressed: () {},
+//            padding: EdgeInsets.all(10),
+//          ),
+//          SizedBox(
+//            width: 20,
+//          ),
+//          OutlineButton(
+//            borderSide: BorderSide(
+//              color: Colors.green,
+//            ),
+//            shape: StadiumBorder(),
+//            child: Text("Say Hi!"),
+//            color: Colors.tealAccent,
+//            onPressed: () {},
+//            padding: EdgeInsets.all(10),
+//          )
         ],
       )
     ],
@@ -234,7 +374,7 @@ class ProfileInfo extends StatelessWidget {
       largeScreen: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileImage(context), profileData],
+        children: <Widget>[profileData, profileImage(context)],
       ),
       smallScreen: Column(
         mainAxisSize: MainAxisSize.max,
@@ -261,52 +401,81 @@ class SocialInfo extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              NavButton(
-                text: "Github",
+              RaisedButton(
+                shape: StadiumBorder(),
+                child: Text(
+                  "Github",
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+                splashColor: Colors.white70,
+                elevation: 2,
                 onPressed: () {},
                 color: Colors.blue,
               ),
-              NavButton(
-                text: "Twitter",
-                onPressed: () {},
-                color: Colors.blue,
+              SizedBox(
+                width: 5,
               ),
-              NavButton(
-                text: "Facebook",
+              RaisedButton(
+                color: Colors.white,
+                shape: StadiumBorder(),
+                child: Text(
+                  "Gmail",
+                  style: TextStyle(fontSize: 15, color: Colors.black),
+                ),
+                splashColor: Colors.blueAccent,
+                elevation: 2,
+                onPressed: () {},
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              RaisedButton(
+                shape: StadiumBorder(),
+                child: Text(
+                  "Facebook",
+                  style: TextStyle(fontSize: 15),
+                ),
+                splashColor: Colors.white,
+                elevation: 2,
                 onPressed: () {},
                 color: Colors.blue,
               ),
             ],
           ),
-          Text(
-            "Pawan Kumar ©️2019",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.grey,
-            ),
-          ),
+//          Text(
+//            "Sumit Kumar ©2019",
+//            textAlign: TextAlign.center,
+//            style: TextStyle(
+//              color: Colors.grey,
+//            ),
+//          ),
         ],
       ),
       smallScreen: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          NavButton(
-            text: "Github",
+          RaisedButton(
+            child: Text("Github"),
             onPressed: () {},
             color: Colors.blue,
           ),
-          NavButton(
-            text: "Twitter",
+          RaisedButton(
+            child: Text("Twitter", style: TextStyle(color: Colors.blue),),
+            onPressed: () {},
+            color: Colors.white,
+          ),
+          RaisedButton(
+            child: Text("Facebook"),
             onPressed: () {},
             color: Colors.blue,
           ),
-          NavButton(
-            text: "Facebook",
-            onPressed: () {},
-            color: Colors.blue,
+          SizedBox(
+            height: 20,
           ),
           Text(
-            "Pawan Kumar ©️2019",
+            "Sumit Kumar ©2019",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.grey,
